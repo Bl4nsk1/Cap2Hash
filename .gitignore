@@ -1,0 +1,19 @@
+static/
+
+# static/*
+# !static/.gitkeep
+
+*.log
+
+*.tmp
+*.cache
+
+Thumbs.db
+
+.vscode/
+.idea/
+
+node_modules/
+
+dist/
+build/
