@@ -1,5 +1,3 @@
-# Cap2Hash
-
 <p align="center">
   <img src="static/cap2hash_banner_clean.png">
 </p>
