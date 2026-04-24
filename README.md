@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/version-1.0-blue">
   <img src="https://img.shields.io/badge/bash-script-green">
   <img src="https://img.shields.io/badge/status-active-success">
-  <img src="https://img.shields.io/badge/license-MIT-lightgrey">
+  <img src="https://img.shields.io/github/license/Bl4nsk1/Cap2Hash">
 </p>
 
 ---
