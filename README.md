@@ -1,7 +1,7 @@
 # Cap2Hash
 
 <p align="center">
-  <img src="assets/cap2hash_banner_clean.png">
+  <img src="static/cap2hash_banner_clean.png">
 </p>
 
 <p align="center">
