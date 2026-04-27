@@ -41,6 +41,12 @@ hashes**.
 -   hcxhashtool (optional)
 -   wlanhcxinfo (fallback)
 
+``` bash
+git clone https://github.com/ZerBea/hcxtools.git
+cd hcxtools
+make -j $(nproc)
+make install (as super user)
+```
 ------------------------------------------------------------------------
 
 ## 🚀 Usage
