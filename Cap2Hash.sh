@@ -1,35 +1,61 @@
 #!/bin/bash
 
 set -euo pipefail
-DIR="handshakes_path"
 
-cd "$DIR" || exit 1
+DIR="${1:-/mnt/c/Users/murilo.blanski/Downloads/handshakes/}"
+
+if [ ! -d "$DIR" ]; then
+    echo "[ERROR] Directory not found: $DIR"
+    exit 1
+fi
+
+if ! command -v hcxpcapngtool >/dev/null 2>&1; then
+    echo "[ERROR] hcxpcapngtool not found. Install hcxtools."
+    exit 1
+fi
+
+cd "$DIR"
 shopt -s nullglob
 
-for file in *.pcap *.cap; do
+files=(*.pcap *.cap)
+
+if [ ${#files[@]} -eq 0 ]; then
+    echo "[INFO] No .pcap or .cap files found in $DIR"
+    exit 0
+fi
+
+converted=0
+skipped=0
+failed=0
+
+for file in "${files[@]}"; do
     output="${file%.*}.hc22000"
 
-    echo "[*] Processing: $file"
+    if [ -f "$output" ]; then
+        echo "[SKIP] $output already exists"
+        ((skipped++))
+        continue
+    fi
 
-    if hcxpcapngtool -o "$output" "$file" >/dev/null 2>&1; then
+    echo "[*] Converting: $file"
 
-        if command -v hcxhashtool >/dev/null 2>&1; then
-            if hcxhashtool -i "$output" >/dev/null 2>&1; then
-                echo "[+] $file OK!"
-            else
-                echo "[-] Invalid hash for $file - removing output..."
-                rm -f "$output"
-            fi
+    if hcxpcapngtool -o "$output" "$file" 2>&1 | grep -q "written to"; then
+
+        if [ -s "$output" ]; then
+            echo "[+] $file -> $output OK!"
+            ((converted++))
         else
-            if wlanhcxinfo -i "$output" >/dev/null 2>&1; then
-                echo "[+] $file OK!"
-            else
-                echo "[-] Invalid hash for $file - removing output..."
-                rm -f "$output"
-            fi
+            echo "[-] Empty output for $file - removing..."
+            rm -f "$output"
+            ((failed++))
         fi
 
     else
-        echo "[!] Error converting file: $file"
+        echo "[!] Failed: $file"
+        rm -f "$output"
+        ((failed++))
     fi
 done
+
+echo ""
+echo "[DONE] Total: ${#files[@]} | Converted: $converted | Skipped: $skipped | Failed: $failed"
