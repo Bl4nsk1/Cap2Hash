@@ -16,73 +16,67 @@
 
 ---
 
+# Cap2Hash
+
+**PCAP/CAP → HC22000 Converter for WPA/WPA2 Cracking**
+
+Fast, automated and reliable handshake conversion
+
 ## ⚡ Overview
 
-Cap2Hash is a lightweight automation tool designed to convert `.pcap`
-and `.cap` Wi-Fi capture files into **Hashcat-compatible `.hc22000`
-hashes**.
-
-------------------------------------------------------------------------
+Cap2Hash is a lightweight automation tool designed to convert `.pcap` and `.cap` Wi-Fi capture files into **Hashcat-compatible `.hc22000` hashes**.
 
 ## 🔥 Features
 
--   Batch processing of `.pcap` and `.cap`
--   Automatic conversion to `.hc22000`
--   Hash validation
--   Auto-clean invalid outputs
--   Fast and silent execution
-
-------------------------------------------------------------------------
+- Batch processing of `.pcap` and `.cap`
+- Automatic conversion to `.hc22000`
+- Skip already converted files
+- Auto-clean invalid/empty outputs
+- Dependency validation before execution
+- Summary report (converted / skipped / failed)
 
 ## 🛠 Requirements
 
--   bash
--   hcxpcapngtool
--   hcxhashtool (optional)
--   wlanhcxinfo (fallback)
+- bash
+- [hcxpcapngtool](https://github.com/ZerBea/hcxtools)
 
-``` bash
+```bash
 git clone https://github.com/ZerBea/hcxtools.git
 cd hcxtools
 make -j $(nproc)
-make install (as super user)
+sudo make install
 ```
-------------------------------------------------------------------------
 
 ## 🚀 Usage
 
-``` bash
-chmod +x cap2hash.sh
-./cap2hash.sh
+```bash
+chmod +x Cap2Hash.sh
+
+# Default directory
+./Cap2Hash.sh
+
+# Custom directory
+./Cap2Hash.sh /path/to/captures/
 ```
-
-Edit:
-
-``` bash
-DIR="handshakes_path"
-```
-
-------------------------------------------------------------------------
 
 ## 📂 Output
 
-    input.pcap → input.hc22000
-
-------------------------------------------------------------------------
+```
+input.pcap → input.hc22000
+```
 
 ## ⚙️ Workflow
 
-    PCAP/CAP → Convert → Validate → Output
-
-------------------------------------------------------------------------
+```
+PCAP/CAP → Convert → Validate → Output
+```
 
 ## 📜 License
+
 MIT License
 
 Copyright (c) 2026 Bl4nsk1
 
-------------------------------------------------------------------------
-
 ## 👤 Author
 
-Bl4nsk1
+[Bl4nsk1](https://github.com/Bl4nsk1)
