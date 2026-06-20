@@ -2,7 +2,6 @@
 
 set -uo pipefail
 
-# Validação dos argumentos
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <directory>"
     exit 1
@@ -10,13 +9,11 @@ fi
 
 DIR="$1"
 
-# Verifica se o diretório existe
 if [ ! -d "$DIR" ]; then
     echo "[ERROR] Directory not found: $DIR"
     exit 1
 fi
 
-# Verifica se o hcxpcapngtool está instalado
 if ! command -v hcxpcapngtool >/dev/null 2>&1; then
     echo "[ERROR] hcxpcapngtool not found. Install hcxtools."
     exit 1
