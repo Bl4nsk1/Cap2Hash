@@ -52,10 +52,6 @@ sudo make install
 ```bash
 chmod +x Cap2Hash.sh
 
-# Default directory
-./Cap2Hash.sh
-
-# Custom directory
 ./Cap2Hash.sh /path/to/captures/
 ```
 
