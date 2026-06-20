@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-DIR="${1:-/path/handshakes/}"
+DIR="/path/pcaps"
 
 if [ ! -d "$DIR" ]; then
     echo "[ERROR] Directory not found: $DIR"
