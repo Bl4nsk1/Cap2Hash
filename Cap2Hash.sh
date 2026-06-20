@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-DIR="${1:-/mnt/c/Users/murilo.blanski/Downloads/handshakes/}"
+DIR="${1:-/path/handshakes/}"
 
 if [ ! -d "$DIR" ]; then
     echo "[ERROR] Directory not found: $DIR"
